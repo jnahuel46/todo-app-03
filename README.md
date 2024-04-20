@@ -14,4 +14,8 @@ npx prisma generate //generate prisma client
 ```
 
 3. * Rename the .env.template file to an .env file and update with your credentials
-4. * Run Seeds ```http://localhost:3000/api/seed```# todo-app-03
+4. * Run ```npm install```
+5. * Run ```npm run dev```
+6. * Run ```npx prisma migrate dev```
+7. * Run ```npx prisma generate```
+8. * Run Seeds ```http://localhost:3000/api/seed```# todo-app-03
