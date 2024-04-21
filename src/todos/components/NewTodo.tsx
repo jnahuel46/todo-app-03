@@ -2,26 +2,18 @@
 
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import { createTodo, deleteTodos } from "../helpers/todo";
-import { useRouter } from "next/navigation";
+import { addTodo, deleteCompleted } from '../actions/todo-actions';
 
 export const NewTodo = () => {
   const [desc, setDesc] = useState("");
-  const router = useRouter();
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (desc.trim().length === 0) return;
-    const updatedTodo = await createTodo(desc);
-    router.refresh();
+    await addTodo(desc);
     setDesc('')
   };
-
-  const deleteCompleted = async () => {
-    const updatedTodo = await deleteTodos();
-    router.refresh();
-  };
-
+ 
   return (
     <form onSubmit={onSubmit} className="flex w-full">
       <input

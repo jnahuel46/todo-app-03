@@ -1,10 +1,11 @@
-'use client'
+"use client";
 
 import { Todo } from "@prisma/client";
 import React from "react";
 import { TodoItem } from "..";
-import { updateTodo } from "../helpers/todo";
+//import { updateTodo } from "../helpers/todo";
 import { useRouter } from "next/navigation";
+import { toogleTodo } from "../actions/todo-actions";
 
 interface Props {
   todos?: Todo[];
@@ -13,16 +14,16 @@ interface Props {
 export const TodosGrids = ({ todos = [] }: Props) => {
   const router = useRouter();
 
-  const toggleTodo = async (id: string, complete: boolean) => {
-    const updatedTodo = await updateTodo(id, complete);
-    router.refresh();
-    return updatedTodo
-  };
+  // const toggleTodo = async (id: string, complete: boolean) => {
+  //   const updatedTodo = await updateTodo(id, complete);
+  //   router.refresh();
+  //   return updatedTodo
+  // };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
       {todos.map((todo) => {
-        return <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />;
+        return <TodoItem key={todo.id} todo={todo} toggleTodo={ toogleTodo } />;
       })}
     </div>
   );
